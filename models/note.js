@@ -10,6 +10,8 @@ author: {
 }
 },{
 timestamps: true
+},{
+tags: [""]
 })
 
 const Note = model('Note', noteSchema)
