@@ -54,3 +54,13 @@ As a user I would like to:
     -delete that note
     -favorites/star button ?? (similar to ripe on fruits crud?)
     -reminders/alarm that goes off at specified time
+
+    ![ERD](wireframes/ERD.jpg)
+    ![Models](wireframes/models.jpg)
+    ![MVCandSchema](wireframes/MVCandSchema.jpg)
+    ![CreateAccount](wireframes/P2createaccount.jpg)
+    ![LoginAccount](wireframes/P2loginaccount.jpg)
+    ![Logout](wireframes/P2logout.jpg)
+    ![Navbar](wireframes/P2navbar.jpg)
+    ![NotesIndex](wireframes/P2notesindex.jpg)
+    ![NotesShow](wireframes/P2showpage.jpg)
