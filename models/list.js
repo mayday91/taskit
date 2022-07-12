@@ -1,7 +1,7 @@
 
 const { Schema, model } = mongoose
 
-const noteSchema = new Schema({
+const listSchema = new Schema({
 title: String,
 body: String,
 author: {
@@ -14,6 +14,6 @@ timestamps: true
 tags: [""]
 })
 
-const Note = model('Note', noteSchema)
+const List = model('List', listSchema)
 
 module.exports = Note
