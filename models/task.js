@@ -2,7 +2,7 @@
 const { Schema, model } = mongoose
 
 const taskSchema = new Schema({
-event: String,
+task: String,
 completed: Boolean,
 author: {
     type: Schema.Types.ObjectId,
@@ -12,6 +12,6 @@ author: {
 timestamps: true
 })
 
-const Note = model('Note', noteSchema)
+const Task = model('Task', taskSchema)
 
-module.exports = Note
+module.exports = Task
