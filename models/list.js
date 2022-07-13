@@ -4,7 +4,7 @@ const { Schema, model } = mongoose
 
 const listSchema = new Schema({
 title: String,
-body: String,
+body: [""],
 // author: {
 //     type: Schema.Types.ObjectId,
 //     ref: 'User'

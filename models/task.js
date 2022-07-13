@@ -1,13 +1,13 @@
-
+const mongoose = require('./connection')
 const { Schema, model } = mongoose
 
 const taskSchema = new Schema({
 task: String,
 completed: Boolean,
-author: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-},
+// author: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'User'
+// },
 },{
 timestamps: true
 })

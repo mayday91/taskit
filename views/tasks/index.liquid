@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div>
+    <h2 class="display-6" style="color: darkolivegreen">Tasks</h2>
+    <div>
+
+    {% for task in tasks %}
+
+    <div id="container">
+        <div class="card" style="width: 20rem">
+            <h5 class="card-header">{{task.task}}</h5> 
+        </div>
+        <div class="card-body">
+            <label class="form-check-label">Completed: </label>
+            <input class="form-check-input" type="checkbox" name="completed" {% if task.completed %} checked {% endif %}>
+        </div>
+    </div>
+        
+    {% endfor %}
+
+    <a href="/tasks" class="btn btn-info">View Tasks</a>
+
+    </div>
+</div>
+
+{% endblock %}

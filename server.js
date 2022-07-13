@@ -7,9 +7,9 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 
 /// Requiring routes
-const listRoutes = require('./controller/list_routes')
-const userRoutes = require('./controller/user_routes')
-const taskRoutes = require('./controller/task_routes')
+const listRoutes = require('./controllers/list_routes')
+const userRoutes = require('./controllers/user_routes')
+const taskRoutes = require('./controllers/task_routes')
 
 
 const app = require('liquid-express-views')(express())
@@ -39,7 +39,7 @@ app.use(
 
 /// Routes
 app.get('/', (req, res) => {
-	res.redirect('/main')
+	res.redirect('/users/login')
 })
 
 app.use('/lists', listRoutes)

@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-// importing task and list models to access database
+// importing task model to access database
 const List = require('../models/list.js')
-// const Task = require('../models/task.js')
+
 
 // GET - Index
 // localhost:3000/lists
@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/lists', (req, res) => {
-    res.send('Lists')
-})
+// router.get('/lists', (req, res) => {
+//     res.send('Lists')
+// })
 
 module.exports = router

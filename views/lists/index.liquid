@@ -1,0 +1,24 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div>
+    <h2 class="display-6" style="color: darkolivegreen">Lists</h2>
+    <div>
+
+    {% for list in lists %}
+
+    <div id="container">
+        <div class="card" style="width: 20rem">
+            <h5 class="card-header">{{list.title}}</h5>
+            {{ list.body | join: ", "}} 
+        </div>
+    </div>
+        
+    {% endfor %}
+
+    <a href="/tasks" class="btn btn-info">View Tasks</a>
+
+    </div>
+</div>
+
+{% endblock %}

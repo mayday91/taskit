@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "seed": "node models/seed.js" 
+    "seedlist": "node models/listseed.js",
+    "seedtask": "node models/taskseed.js"
   },
   "repository": {
     "type": "git",
