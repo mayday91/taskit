@@ -1,0 +1,54 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+
+<div class="container-md">
+    <article>
+
+    <h2>Name: {{task.name}}</h2>
+    <br>
+        <h3>Importance: {{task.importance}}</h3>
+        <br>
+    <h4>
+        {% if task.completed %}
+        Task is done!
+        {% else %}
+        Task is not done!
+        {% endif %}
+    </h4>
+    <p>{{datetime}}</p>
+<br>
+    <div class="btn-group">
+    <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">
+    <input type="submit" value="Delete" class="btn  btn-danger">    
+    <a href="{{task._id}}/edit" class="btn btn-primary">Edit</a>
+    <a href="/tasks" class="btn btn-warning">All Tasks</a>
+    </form>
+    </div>
+    </article>
+
+    <div class="col-md-6">
+        <form action="/comments/{{task._id}}" method="POST">
+            <fieldset>
+            <legend>Add Comment</legend>
+            <label class="form-label">Comment:</label>
+            <input type="text" class="form-control" name="note" placeholder="Start typing...">
+            </fieldset>
+            <input type="submit" class="btn btn-primary" value="Add Comment">
+        </form>
+    </div>
+
+    {% if task.comments.length != 0 %}
+
+    <div class="comments container-sm justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            {% for comment in task.comments %}
+            {% render '../comment.liquid' comment: comment, userId: userId, task: task, username: username %}  <!-- 2nd 'comment' comes from comment in for loop above. 1st 'comment' is how you call it on comment.liquid page -->
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+<!--  -->
+{% endblock %}

@@ -2,24 +2,33 @@
 
 {% block content %}
 <div>
-    <h2 class="display-6" style="color: darkolivegreen">Tasks</h2>
-    <div>
+    <h2 class="display-6" style="color: olive">Tasks</h2>
+    <div class="row">
 
     {% for task in tasks %}
 
-    <div id="container">
-        <div class="card" style="width: 20rem">
-            <h5 class="card-header">{{task.task}}</h5> 
-        </div>
-        <div class="card-body">
-            <label class="form-check-label">Completed: </label>
-            <input class="form-check-input" onclick="" type="checkbox" name="completed" {% if task.completed %} checked {% endif %}>
-        </div>
-    </div>
-    <a href="tasks/{{task._id}}/edit" class="btn btn-primary">Edit Task</a>
-    {% endfor %}
+    <div class="card" style="width: 20rem">
 
-    <a href="/tasks" class="btn btn-info">View Tasks</a>
+    <h5 class="card-header">{{task.name}}</h5>
+
+    <div class="card-body">
+        <h6 class="card-title">
+            {% if task.completed%}
+            Done!
+            {% else %}
+            Not done!
+            {% endif %}
+        </h6>
+
+    <p class="card-text">The importance of this task is <span class="imp">{{task.importance}}</span></p>
+    <p>{{task.owner}}</p>
+    <a href="/tasks/{{task._id}}" class="btn view">View Task</a>
+
+    </div>
+
+    </div>
+
+    {% endfor %}
 
     </div>
 </div>

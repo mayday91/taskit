@@ -8,16 +8,12 @@ const bcrypt = require('bcryptjs')
 const router = express.Router()
 
 ////////////////Our Routes//////////
-
-
-
-// two sign up routes
-// one GET to show the form
+/// two sign up routes
+/// one GET to show the form
 router.get('/signup', (req, res) => {
     res.render('users/signup')
 })
-
-// one POST to make the db request
+/// one POST to make the db request
 router.post('/signup', async (req, res) => {
     console.log('this is our initial request body', req.body)
     // need to encrypt password
@@ -39,8 +35,8 @@ router.post('/signup', async (req, res) => {
     })
 })
 
-//  two login routes
-//  one GET to show the form
+/// two login routes
+/// GET to show the form
 router.get('/login', (req, res) => {
     res.render('users/login')
 })
@@ -69,7 +65,7 @@ router.post('/login', async (req, res) => {
                     req.session.userId = user._id
                     // redirect to '/fruits' page
                     console.log('this is session after login', req.session)
-                    res.redirect('/lists')
+                    res.redirect('/tasks')
                 } else {
                     // send json error
                     res.json({ error: 'username or password incorrect' })
@@ -78,9 +74,9 @@ router.post('/login', async (req, res) => {
                 // send error if user doesnt exist
                 res.json({ error: 'user does not exist' })
             }
-        
+        // otherwise (pw incorrect) send error message
         })
-        
+        // if not redirect to sign up page
         .catch(error => {
             console.log(error)
             res.json(error)
@@ -93,10 +89,11 @@ router.get('/logout', (req, res) => {
         console.log('this is returned from req.session.destroy', ret)
         console.log('session has been destroyed')
         console.log(req.session)
-        res.redirect('/main')
+        res.redirect('/users/signup')
     })
 })
 
+/// can be a GET that calls destroy on our session
 /// we can add an 'are you sure?' page if there is time
 
 ////////////export our router////////////

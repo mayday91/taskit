@@ -5,20 +5,23 @@
 
 <form action="/tasks/{{task._id}}?_method=PUT"  method="POST">
     <fieldset>
-    <legend>Edit Task</legend>
+    <legend>Edit this task:</legend>
 
-    <label class="form-label">Task: </label>
-    <input class="form-control" type="text" name="name" placeholder="{{task.task}}">
+    <label class="form-label">Name: </label>
+    <input class="form-control" type="text" name="name" placeholder="{{task.name}}">
+    
+    <label class="form-label">Importance: </label>
+    <input class="form-control" type="number" name="importance" placeholder="{{task.importance}}">
 
     <br>
-    <label class="form-check-label">Completed: </label>
+    <label class="form-check-label">Done: </label>
     <input class="form-check-input" type="checkbox" name="completed" {% if task.completed %} checked {% endif %}>
 
     </fieldset>
     <br>
     <div class="btn-group">
-    <input type="submit" value="Submit Changes" class="btn btn-success">
-    <a href="/tasks" class="btn btn-warning">Nevahmind!</a>
+    <input type="submit" value="Submit" class="btn btn-success">
+    <a href="/tasks" class="btn btn-warning">Cancel</a>
     </div>
 </form>
 

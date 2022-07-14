@@ -1,8 +1,9 @@
+//////////////Import Dependencies////////
 const mongoose = require('./connection')
 
 const { Schema, model } = mongoose
 
-
+/// User Schema
 const userSchema = new Schema({
     username: {
     type: String,
@@ -15,6 +16,8 @@ const userSchema = new Schema({
     }
 })
 
+/// make a user model with userSchema
 const User = model('User', userSchema)
 
+/// export to user model
 module.exports = User

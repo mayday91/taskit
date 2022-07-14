@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div class="container-md" class="new-task">
+
+<form action="/tasks" method="POST">
+    <fieldset>
+        <legend>Create a New Task</legend>
+
+        <label class="form-label">Name:</label>
+        <input class="form-control" type="text" name="name" placeholder="Enter name">
+
+        <label class="form-label">Importance:</label>
+        <input class="form-control" type="number" name="importance" placeholder="Enter importance">
+
+        <label class="form-label">Completed: </label>
+        <input class="form-check-input" type="checkbox" name="completed">
+        <br>
+        <label class="form-label">Date: </label>
+        <input class="form-control" type="datetime-local" name="datetime">
+<br>
+        <input type="submit" value="Create New Task" class="btn btn-success">
+    </fieldset>
+</form>
+
+</div>
+{% endblock %}
