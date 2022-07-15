@@ -4,12 +4,15 @@ const express = require('express')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const { google } = require('googleapis')
-// const request = require('request')
+const request = require("request")
 const cors = require('cors')
 const urlParse = require('url-parse')
 const queryParse = require('query-string')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+const { OAuth2Client } =  require('google-auth-library')
+let authentication = require("./authentication")
+
 
 
 
@@ -57,35 +60,13 @@ app.use(
 	})	
 )
 
-
 // Routes
 
-app.get('/', (req, res) => {
-	// const oauth2client = new google.auth.OAuth2(
-	// 	//client ID
-	// 	"687924894964-27t117nuvjrkt7rd86m4u79gtsokp50q.apps.googleusercontent.com",
-	// 	// client secret
-	// 	"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",
-	// 	// redirect link
-	// 	"http://localhost:3001/tasks"
-	// 	)
-	// const scopes = ["https://www.googleapis.com/auth/tasks"]
-
-	// const url = oauth2client.generateAuthUrl({
-	// 	access_type: "offline",
-	// 	scope: scopes,
-	// 	state: JSON.stringify({
-	// 		callbackUrl: req.body.callbackUrl,
-	// 		userID: req.body.userid
-	// 	})
-	// })
-	// request(url, (err, response, body) => {
-	// 	console.log("error", err);
-	// 	console.log('statusCode: ', response && response.statusCode);
-	// 	res.send({ url })
-	// })
-	res.redirect('/tasks')
+app.get('/',  (req, res) => {
+	res.redirect('/tasks/mine')
 })
+
+
 app.use('/tasks', taskRoutes)
 app.use('/users', userRoutes)
 app.use('/comments', commentRoutes)
@@ -98,3 +79,6 @@ const PORT = process.env.PORT
 app.listen(PORT, () => {
 	console.log(`app is listening on port: ${PORT}`)
 })
+
+
+/// 4/0AdQt8qhiwYczkUHzHPX-6fcAu8jHftsnDEcNv0RLZ9T03x5kAS4-_QkkMsBoctrtlQaW3A

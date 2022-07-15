@@ -11,7 +11,7 @@ const router = express.Router()
 /// two sign up routes
 /// one GET to show the form
 router.get('/signup', (req, res) => {
-    res.render('users/signup')
+    res.render('users/createuser')
 })
 /// one POST to make the db request
 router.post('/signup', async (req, res) => {
@@ -89,7 +89,7 @@ router.get('/logout', (req, res) => {
         console.log('this is returned from req.session.destroy', ret)
         console.log('session has been destroyed')
         console.log(req.session)
-        res.redirect('/users/signup')
+        res.redirect('/users/login')
     })
 })
 

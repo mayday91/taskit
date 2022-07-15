@@ -16,7 +16,7 @@
         Task is not done!
         {% endif %}
     </h4>
-    <p>{{datetime}}</p>
+    <p>{{timestamps.date.new}}</p>
 <br>
     <div class="btn-group">
     <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">

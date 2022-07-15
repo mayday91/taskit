@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
 
     Task.findByIdAndUpdate(taskId, req.body, { new: true })
         .then(task => {
-            res.redirect(`/tasks/${task._id}`)
+            res.redirect(`/tasks/mine`)
         })
         .catch(err => {
             res.json(err)
@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     Task.find({})
     .then(tasks => {
-        res.render('tasks/index', { tasks })
+        res.redirect('tasks/mine')
     })
     .catch(err => {
         res.json(err)
@@ -77,7 +77,9 @@ router.get('/', (req, res) => {
 router.get('/mine', (req, res) => {
     Task.find({ owner: req.session.userId})
     .then(tasks => {
-        res.render('tasks/index', { tasks })
+        console.log(req.session.username)
+        const user = req.session.username
+        res.render('tasks/index', { user, tasks })
     })
     .catch(error => {
         console.log(error)
