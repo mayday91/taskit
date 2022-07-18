@@ -9,7 +9,7 @@ router.delete('/:id', (req, res) => {
     const taskId = req.params.id
     Task.findByIdAndRemove(taskId)
     .then(task => {
-        res.redirect('/tasks')
+        res.redirect('/tasks/mine')
     })
     .catch(err => {
         res.json(err)
@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
 
     Task.findByIdAndUpdate(taskId, req.body, { new: true })
         .then(task => {
-            res.redirect(`/tasks/mine`)
+            res.redirect(`/tasks/${task._id}`)
         })
         .catch(err => {
             res.json(err)
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
     req.body.owner = req.session.userId
     Task.create(req.body)
     .then(task => {
-        res.redirect('/tasks')
+        res.redirect('/tasks/mine')
     })
     .catch(err => {
         res.json(err)
@@ -65,11 +65,27 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     Task.find({})
     .then(tasks => {
-        res.redirect('tasks/mine')
+        res.render('tasks/all-index' ,{ tasks })
     })
     .catch(err => {
         res.json(err)
     })
+})
+
+router.get('/tasks', (req, res) => {
+    Task.find({})
+    console.log(task)
+    .then(tasks => {
+        res.render('tasks/all-index', { tasks })
+    })
+    .catch(err => {
+        res.json(err)
+    })
+})
+
+// GET - About Page
+router.get('/tasks/about', (req, res) => {
+        res.render('tasks/about')
 })
 
 
@@ -103,8 +119,8 @@ router.get('/:id', (req, res) => {
 })
 
 
-router.get('/tasks', (req, res) => {
-    res.send('Task Page')
-})
+// router.get('/tasks', (req, res) => {
+//     res.send('Task Page')
+// })
 
 module.exports = router

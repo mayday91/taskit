@@ -13,15 +13,20 @@ const db = mongoose.connection
 db.on('open', () => {
     // array of starter tasks
     const startTasks = [
-        { name: "Orange", importance: 8, completed: true },
-        { name: "Grape", importance: 8, completed: true },
-        { name: "Banana", importance: 8, completed: false },
-        { name: "Strawberry", importance: 8, completed: true },
-        { name: "Coconut", importance: 8, completed: false },
+        { name: "Clean Kitchen", importance: 6, completed: true },
+        { name: "Clean out garage", importance: 3, completed: false },
+        { name: "Fix car", importance: 8, completed: false },
+        { name: "Finish old hw", importance: 10, completed: true },
+        { name: "Take bike to shop", importance: 5, completed: false },
+        { name: "Paint office", importance: 7, completed: false },
+        { name: "Put together desk", importance: 7, completed: false },
+        { name: "Call insurance company", importance: 9, completed: true },
+        { name: "Make iced coffee for morning", importance: 10, completed: true },
+        { name: "Plan vacation for after school", importance: 6, completed: false },
       ]
-      // when we seed data we usually clear out the db first
+      // clear out the db first
     Task.remove({})
-    // then create that data
+    // then create the new seed data
     .then(deletedTasks => {
         console.log('this is what remove returns', deletedTasks)
         // now that our delete was successful we can create our tasks

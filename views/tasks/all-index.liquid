@@ -2,7 +2,7 @@
 
 {% block content %}
 <div>
-    <h1 class="header">My Tasks</h1>
+    <h1 class="header">All Tasks</h1>
     
             <!---------------- ADD NEW NOTE MODAL ---------------->
     <div class="add-note">
@@ -69,34 +69,6 @@
                 
             
             </div>
+            {% endblock %}
 <!------------------ END OF BODY ------------------>         
     <!---------------------  ------------------------>
-<!---------------- EDIT NOTE MODAL ---------------->
-    <!-- <div class="add-note">
-            <a href="#editModal" class="add-task">Edit</a>
-    </div>
-    <div id="editModal" class="modal">
-        <div class="modal-content"> -->
-            <!-- <fieldset>
-                <h1 class="">Edit Task</h1>
-                <form action="/tasks/{{task._id}}?_method=PUT"  method="POST">
-            <legend>Edit this task:</legend>
-                
-            <label class="form-label">Name: </label>
-            <input class="form-control" type="text" name="name" placeholder="{{task.name}}">
-            <br>
-            <label class="form-label">Importance: </label>
-            <input class="form-control" type="number" name="importance" placeholder="{{task.importance}}">
-                
-            <br>
-            <label class="form-check-label">Completed: </label>
-            <input class="form-check-input" type="checkbox" name="completed" {% if task.completed %} checked {% endif %}>
-                
-            <input type="submit" value="Edit Task" class="create-btn">
-            <div class="cancel">
-                <a href="#close" class="cancel-btn">Cancel</a>
-            </form> -->
-            
-        <!-- </fieldset> -->
-
-{% endblock %}

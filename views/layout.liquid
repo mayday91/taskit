@@ -9,11 +9,14 @@
         <!-- link for bootstrap -->
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cookie&family=Cormorant+SC:wght@300&family=Dancing+Script&family=Great+Vibes&family=Indie+Flower&family=Playfair+Display:ital@0;1&family=Sacramento&family=Satisfy&family=Square+Peg&family=Stint+Ultra+Condensed&family=The+Nautigal&display=swap" rel="stylesheet">
+
     </head>
     <body>
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">☰ Task.it</button>
         <div class="dropdown-content" id="myDropdown">
+          <a href="/tasks">All Tasks</a>
           <a href="/tasks/mine">My Tasks</a>
           <a href="/users/signup">Sign Up</a>
           <a href="/users/login">Log In</a>
@@ -28,6 +31,14 @@
             {% endblock %}
       </main>
         
+      <footer>
+<div class="footer">
+
+
+</div>
+
+      </footer>
+
     <script>
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -46,5 +57,6 @@ window.onclick = function(event) {
   }
 }
     </script>
+
     </body>
 </html>

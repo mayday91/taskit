@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<div class="container-md">
+<div class="show-task">
     <article>
 
-    <h2>Name: {{task.name}}</h2>
-    <br>
+    <h2>Task: {{task.name}}</h2>
+    
         <h3>Importance: {{task.importance}}</h3>
-        <br>
+        
     <h4>
         {% if task.completed %}
         Task is done!
@@ -16,18 +16,22 @@
         Task is not done!
         {% endif %}
     </h4>
-    <p>{{timestamps.date.new}}</p>
-<br>
+
+    <text class="created-at">Created by: {{user}}</text>
+    <br>
+    <text class="created-at">@ {{ task.createdAt | date: "%I:%M %m-%d-%y" }}</text>
+                        <br>
     <div class="btn-group">
-    <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">
-    <input type="submit" value="Delete" class="btn  btn-danger">    
+    <!-- <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">
+    <input type="submit" value="Delete" class="btn  btn-danger">     -->
     <a href="{{task._id}}/edit" class="btn btn-primary">Edit</a>
     <a href="/tasks" class="btn btn-warning">All Tasks</a>
     </form>
     </div>
     </article>
+    <br><br>
 
-    <div class="col-md-6">
+    <div class="add-comment">
         <form action="/comments/{{task._id}}" method="POST">
             <fieldset>
             <legend>Add Comment</legend>
@@ -40,8 +44,8 @@
 
     {% if task.comments.length != 0 %}
 
-    <div class="comments container-sm justify-content-center">
-        <div class="col-md-8 col-lg-6">
+    <div class="comment-card">
+        <div class="comment-body">
             {% for comment in task.comments %}
             {% render '../comment.liquid' comment: comment, userId: userId, task: task, username: username %}  <!-- 2nd 'comment' comes from comment in for loop above. 1st 'comment' is how you call it on comment.liquid page -->
             {% endfor %}

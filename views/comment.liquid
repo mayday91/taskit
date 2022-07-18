@@ -1,0 +1,18 @@
+
+{% block content %}
+
+
+<div class="comment-card">
+    <div class="comment-body">
+        <p>{{comment.note}}</p>
+        <div class="comment-author">
+            <small>Posted by: {{ username }}</small>
+            <form action="/comments/delete/{{task._id}}/{{comment._id}}?_method=DELETE" method="POST">
+                <input class="delete-comment" type="submit" value="Delete Comment">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
