@@ -49,18 +49,35 @@
                             {% endif %}
                         </h3>
                         <p class="card-text">Importance level: <span class="imp">{{task.importance}}</span></p>
-                        <p>Created by: {{user}}</p>      
+                        <p>Created by: {{user}}</p>  
+                        
+                        <a href="/tasks/{{task._id}}" class="btn view">Edit Task</a>
+                    <BR>
+                    <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">
+                        <input type="submit" value="Delete" class="btn btn-delete btn-danger">    
+                    </form>
+                    </div>
+                </div>
+                    </div>
+                    
+                    
+                
+                
+                {% endfor %}
+                
+            
+            </div>
 <!------------------ END OF BODY ------------------>         
     <!---------------------  ------------------------>
 <!---------------- EDIT NOTE MODAL ---------------->
-    <div class="add-note">
+    <!-- <div class="add-note">
             <a href="#editModal" class="add-task">Edit</a>
     </div>
     <div id="editModal" class="modal">
-        <div class="modal-content">
-            <h1 class="">Edit Task</h1>
-            <form action="/tasks/{{task._id}}?_method=PUT"  method="POST">
-            <fieldset>
+        <div class="modal-content"> -->
+            <!-- <fieldset>
+                <h1 class="">Edit Task</h1>
+                <form action="/tasks/{{task._id}}?_method=PUT"  method="POST">
             <legend>Edit this task:</legend>
                 
             <label class="form-label">Name: </label>
@@ -76,21 +93,8 @@
             <input type="submit" value="Edit Task" class="create-btn">
             <div class="cancel">
                 <a href="#close" class="cancel-btn">Cancel</a>
-            </form>
-            <form action="/tasks/{{task._id}}?_method=DELETE"method="POST">
-                <input type="submit" value="Delete" class="btn btn-delete btn-danger">    
-            </form>
-            </fieldset>
-        </div>
-    </div>
-        </div>
-    </div>
-    {% endfor %}
-    </div>
+            </form> -->
+            
+        <!-- </fieldset> -->
 
-</div>
 {% endblock %}
-
-<script>
-    
-</script>
