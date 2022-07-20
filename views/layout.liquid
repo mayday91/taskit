@@ -6,13 +6,16 @@
         <title>Tasks</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- link for bootstrap -->
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+        
         <link rel="stylesheet" href="/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cookie&family=Cormorant+SC:wght@300&family=Dancing+Script&family=Great+Vibes&family=Indie+Flower&family=Playfair+Display:ital@0;1&family=Sacramento&family=Satisfy&family=Square+Peg&family=Stint+Ultra+Condensed&family=The+Nautigal&display=swap" rel="stylesheet">
+        
+    <!-- <meta name="google-signin-scope" content="profile email"> -->
+    <meta name="google-signin-client_id" content="687924894964-9hm7on00cr635tsr8k9rq4u29ngsnuad.apps.googleusercontent.com">
+  </head>
 
-    </head>
-    <body>
+  <body>
+<!--------- NAVBAR ----------->
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">☰ Task.it</button>
         <div class="dropdown-content" id="myDropdown">
@@ -21,25 +24,86 @@
           <a href="/users/signup">Sign Up</a>
           <a href="/users/login">Log In</a>
           <a href="/users/logout">Log Out</a>
-          <a href="/tasks/about">About</a>
         </div>
       </div>
-         
-      <main class="container-md">
-            {% block content %}
-            my content
-            {% endblock %}
-      </main>
-        
-      <footer>
-<div class="footer">
+<!-------- END OF NAVBAR -------->
 
-
+<!-- SEARCH BAR --> 
+<div class="search-wrapper">
+  <label for="search">Search Tasks </label><br>
+  <input type="search" id="search">
+</div>
+<div class="task-search-cards">
+  <div class="search-card">
+    <div class="header">Task: </div>
+  </div>
 </div>
 
-      </footer>
+<form>
+<input type="text" id="search-bar" onkeyup="sendData(this)">
+<input type="submit">
+</form>
+<section id="searchResults">
+</section>
 
-    <script>
+<script>
+  function sendData(e){
+    const searchResults = document.getElementById('searchResults')
+    fetch('getTasks', {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({payload: e.value})
+    })
+    .then(res => res.json()).then(data => {
+      let payload = data.payload;
+      searchResults.innerHTML = '';
+      if(payload.length < 1){
+        searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+        return;
+      }
+      payload.forEach((item, index) => {
+        if(index > 0) searchResults.innerHTML += '<br>';
+        searchResults.innerHTML += `<ul class="search-items"><li>${item.name}</li></ul>`;
+      })
+      return;
+    })
+  }
+</script>
+
+<!-- END OF SEARCH BAR -->
+
+<!-- MAIN BODY -->
+<div class="page-container">
+<main class="content-wrap">
+  {% block content %}
+  my content
+  {% endblock %}
+</main>
+</div>
+<br>
+<br>
+<!-- END OF MAIN BODY -->
+
+<!-- FOOTER -->
+  <footer>
+  <div class="footer">
+  © Mayday Media | All Rights Reserved
+  <br>
+    <div class="footer-links">
+    <a href="https://www.linkedin.com/in/ryanwmay/">
+    <img src="/linkedinlogo1med.png"></a>
+    <a href="https://github.com/mayday91">
+    <img src="/githublogo1med.png"></a>
+    <a href="https://twitter.com/RyanWMay">
+    <img src="/twitterlogo1med.png"></a>
+    </div>
+  </div>
+  </footer>
+     <!-- END OF FOOTER -->
+
+
+     <!-- FUNCTION FOR DROPDOWN -->
+  <script>
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -56,7 +120,7 @@ window.onclick = function(event) {
     }
   }
 }
-    </script>
-
-    </body>
+  </script>
+ <!-- END OF FUNCTION -->
+  </body>
 </html>

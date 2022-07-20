@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
                     req.session.userId = user._id
                     // redirect to '/fruits' page
                     console.log('this is session after login', req.session)
-                    res.redirect('/tasks')
+                    res.redirect('/tasks/mine')
                 } else {
                     // send json error
                     res.json({ error: 'username or password incorrect' })

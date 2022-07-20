@@ -12,6 +12,8 @@ const bodyParser = require('body-parser')
 const axios = require('axios')
 const { OAuth2Client } =  require('google-auth-library')
 let authentication = require("./authentication")
+const Task = require('./models/task.js')
+
 
 
 
@@ -34,6 +36,7 @@ app.use(methodOverride('_method'))
 
 app.use(cors())
 
+app.use(express.json())
 // parses urlencoded request bodies
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -63,7 +66,14 @@ app.use(
 // Routes
 
 app.get('/',  (req, res) => {
-	res.redirect('/tasks/mine')
+	res.redirect('/users/login')
+})
+
+app.post('/getTasks', async (req, res) => {
+	let payload = req.body.payload.trim();
+	let search = await Task.find({name: {$regex: new RegExp('^'+payload+'.*','i')}}).exec();
+	res.send({payload: search})
+	console.log(payload)
 })
 
 

@@ -4,7 +4,7 @@ const router = express.Router()
 const Task = require('../models/task.js')
 
 
-// DELETE route
+// DELETE - Remove Task
 router.delete('/:id', (req, res) => {
     const taskId = req.params.id
     Task.findByIdAndRemove(taskId)
@@ -16,7 +16,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// GET route for displaying an update form
+// GET - Display Update Form
 router.get('/:id/edit', (req, res) => {
     const taskId = req.params.id
     Task.findById(taskId)
@@ -28,7 +28,7 @@ router.get('/:id/edit', (req, res) => {
         })
 })
 
-// PUT - Update route
+// PUT - Update Task
 router.put('/:id', (req, res) => {
     const taskId = req.params.id
 
@@ -43,12 +43,12 @@ router.put('/:id', (req, res) => {
         })
 })
 
-// GET route for displaying my form for create
+// GET - Display Create Form
 router.get('/new', (req, res) => {
     res.render('tasks/new')
 })
 
-// POST - Create
+// POST - Create Task
 router.post('/', (req, res) => {
     req.body.completed = req.body.completed === 'on' ? true : false
     req.body.owner = req.session.userId
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
     })
 })
 
-// GET - Index
+// GET - All Index
 router.get('/', (req, res) => {
     Task.find({})
     .then(tasks => {
@@ -72,24 +72,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/tasks', (req, res) => {
-    Task.find({})
-    console.log(task)
-    .then(tasks => {
-        res.render('tasks/all-index', { tasks })
-    })
-    .catch(err => {
-        res.json(err)
-    })
-})
-
-// GET - About Page
-router.get('/tasks/about', (req, res) => {
-        res.render('tasks/about')
-})
-
-
-// GET - Current User Tasks
+// GET - Current User Index
 router.get('/mine', (req, res) => {
     Task.find({ owner: req.session.userId})
     .then(tasks => {
@@ -103,7 +86,7 @@ router.get('/mine', (req, res) => {
     })
 })
 
-// GET- Show
+// GET- Show Task
 router.get('/:id', (req, res) => {
     const taskId = req.params.id
     Task.findById(taskId)
@@ -118,9 +101,5 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
-// router.get('/tasks', (req, res) => {
-//     res.send('Task Page')
-// })
 
 module.exports = router

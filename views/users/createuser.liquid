@@ -1,19 +1,19 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<div class="container-md">
+<div class="signup">
     <form action="/users/signup" method="POST">
 
-        <fieldset>
+    
             <legend>New User</legend>
             
             <label class="form-label">Username:</label>
             <input type="text" name="username" class="form-control">
-            
+            <br>
             <label class="form-label">Password:</label>
             <input type="password" name="password" class="form-control">
 
-        </fieldset>
+        
         <br>
         <input type="submit" value="Create Account" class="btn btn-success">
 

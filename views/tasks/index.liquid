@@ -2,7 +2,7 @@
 
 {% block content %}
 <div>
-    <h1 class="header">My Tasks</h1>
+    <h1 class="header"> Welcome back {{user}}! <br><br> Here are your tasks!</h1>
     
             <!---------------- ADD NEW NOTE MODAL ---------------->
     <div class="add-note">
@@ -51,7 +51,8 @@
                         </text><br>
                         <text class="card-text">Importance: <span class="imp">{{task.importance}}</span></text><br>
                         <text class="created-at">Created by: {{user}}</text><br>  
-                        <text class="created-at">@ {{ task.createdAt | date: "%I:%M %m-%d-%y" }}</text>
+                        <text class="created-at">@ 
+                            {{ task.createdAt | date: "%I:%M %m-%d-%y" }}</text>
                         <br>
                         <!-- <a href="/tasks/{{task._id}}" class="btn view">View Task</a>
                     <BR> -->

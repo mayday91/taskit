@@ -30,14 +30,14 @@
     </div>
     </article>
     <br><br>
-
+</div>
     <div class="add-comment">
         <form action="/comments/{{task._id}}" method="POST">
-            <fieldset>
+            
             <legend>Add Comment</legend>
             <label class="form-label">Comment:</label>
             <input type="text" class="form-control" name="note" placeholder="Start typing...">
-            </fieldset>
+            <br>
             <input type="submit" class="btn btn-primary" value="Add Comment">
         </form>
     </div>
@@ -45,14 +45,13 @@
     {% if task.comments.length != 0 %}
 
     <div class="comment-card">
-        <div class="comment-body">
             {% for comment in task.comments %}
             {% render '../comment.liquid' comment: comment, userId: userId, task: task, username: username %}  <!-- 2nd 'comment' comes from comment in for loop above. 1st 'comment' is how you call it on comment.liquid page -->
             {% endfor %}
-        </div>
+        
     </div>
 
     {% endif %}
-</div>
+
 <!--  -->
 {% endblock %}
