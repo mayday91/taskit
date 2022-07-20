@@ -93,8 +93,7 @@ router.get('/logout', (req, res) => {
     })
 })
 
-/// can be a GET that calls destroy on our session
-/// we can add an 'are you sure?' page if there is time
+
 
 ////////////export our router////////////
 module.exports = router
