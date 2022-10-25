@@ -1,15 +1,7 @@
-# project2app
+# Task.it
 Project 2 App
-a reminder of what is needed in your planning docs (aka in your README):
-complete ERDs for both models AND user model (3 models in total)
-at least 15 user stories
-at least 8 wireframes
-a list of APIs or NPM packages or an overview of the seeded data (which requires 10 documents)
-NOTE: seeded data does not have to be completely built out in the planning stages, just some indication of an idea of what will be seeded.
-a routes table demonstrating the full CRUD actions for at least one resource
 
 ////////////// Using ///////////////
-- Google Keep API
 - Bootstrap
 - mongoose
 - connect-mongo
@@ -54,6 +46,12 @@ As a user I would like to:
     - delete that note
     - favorites/star button ?? (similar to ripe on fruits crud?)
     - reminders/alarm that goes off at specified time
+
+
+- Ideas for future versions:
+    - text/email reminder option for notes
+    - separate notes so user can only see their own
+    - allow users to share notes with other users
 
 
 ![ERD](wireframes/ERD.jpg)
